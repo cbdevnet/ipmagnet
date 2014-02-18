@@ -1,0 +1,49 @@
+body{
+	width:100%;
+	height:100%;
+}
+
+h1{
+	padding:0;
+	margin:0;
+	display:inline-block;
+}
+
+#center-wrap{
+	width:90%;
+	margin:auto;
+}
+
+#content-main{
+	border-radius:1em;
+	background-color:#ccc;
+	margin-top:1em;
+	padding:2em;
+}
+
+#title-wrap{
+	text-align:center;
+}
+
+#mission-statement{
+	font-style:italic;
+	margin-bottom:1em;
+	text-align:center;
+	font-size:90%;
+}
+
+#current-connections{
+	margin-top:2em;
+}
+
+#conn-table{
+	width:100%;
+}
+
+#meta-footer{
+	float:right;
+}
+
+#status-line{
+	float:left;
+}
