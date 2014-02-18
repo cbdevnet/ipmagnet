@@ -38,7 +38,7 @@
 			<div id="footer-text">
 			<span id="status-line">Status: n/a <span id="status-text"></span></span>
 				<span id="meta-footer">
-					<a href="https://github.com/cbdevnet/magnetip">[source]</a>
+					<a href="https://github.com/cbdevnet/ipmagnet">[source]</a>
 					<a href="http://www.kopimi.com/kopimi/"><img src="static/kopimi.png"/></a>
 					<a href="http://wtfpl.net/"><img src="static/wtfpl.png"/></a>
 				</span>
