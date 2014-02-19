@@ -1,0 +1,3 @@
+"Delete my data" button
+AJAX interface (kill meta reload and links, replace by js)
+Tracker implementation (send ip via errmsg)
