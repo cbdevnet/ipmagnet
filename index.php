@@ -1,6 +1,48 @@
 <?php
-	$HASH="f6108c60ba96a6e4a1bf27abf1f9ce138188e384";
-	$TRACKER="http%3A%2F%2Fdev.cbcdn.com%3A80%2Fipmagnet";
+	$db = new PDO("sqlite:ipmagnet.db3");
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+
+	//todo db errhandling
+	//todo ajax api
+
+	if(isset($_GET["info_hash"])){
+		$query="INSERT INTO hits (hash, timestamp, addr, agent) VALUES (:hash, :timestamp, :addr, :agent)";
+		$stmt=$db->prepare($query);
+		//ipv4 | ipv6
+		
+		$addrs=htmlentities($_SERVER["REMOTE_ADDR"], ENT_QUOTES);
+		if(isset($_GET["ipv4"])&&$_GET["ipv4"]!=$_SERVER["REMOTE_ADDR"]){
+			$addrs.=", ".htmlentities($_GET["ipv4"], ENT_QUOTES);
+		}
+		if(isset($_GET["ipv6"])&&$_GET["ipv6"]!=$_SERVER["REMOTE_ADDR"]){
+			$addrs.=", ".htmlentities($_GET["ipv6"], ENT_QUOTES);
+		}
+
+		$stmt->execute(
+			array(
+				":hash" => htmlentities($_GET["info_hash"], ENT_QUOTES),
+				":timestamp" => time(),
+				":addr" => $addrs,
+				":agent" => htmlentities($_SERVER["HTTP_USER_AGENT"],ENT_QUOTES)
+			)
+		);
+		print("d14:failure reason21:IP stored in databasee");
+		die();
+	}
+
+	if(isset($_GET["hash"])){
+		$HASH=htmlentities($_GET["hash"]); //fixme enough?
+	}
+	else{
+		$HASH=SHA1($_SERVER["REMOTE_ADDR"]);
+	}
+
+	if(isset($_GET["clear"])){
+		//todo clear for hash
+	}
+	
+	//$TRACKER="http%3A%2F%2Fdev.cbcdn.com%3A80%2Fipmagnet";
+	$TRACKER="http%3A%2F%2Flocalhost%3A80%2Fipmagnet%2F";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,6 +67,9 @@
 				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.
 				FYI, the address you've accessed this page with is <?php print($_SERVER["REMOTE_ADDR"]); ?>
 				<div id="current-connections">
+					<div id="clear-data">
+						<a href="?clear&hash=<?php print($HASH); ?>" id="clear-data-link">Clear my Data</a>
+					</div>
 					<table id="conn-table">
 						<tr>
 							<th>Timestamp</th>

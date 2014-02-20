@@ -9,6 +9,10 @@ h1{
 	display:inline-block;
 }
 
+a {
+	text-decoration:none;
+}
+
 #center-wrap{
 	width:90%;
 	margin:auto;
@@ -30,6 +34,17 @@ h1{
 	margin-bottom:1em;
 	text-align:center;
 	font-size:90%;
+}
+
+#clear-data{
+	float:right;
+	padding-right:2em;
+}
+
+#clear-data-link{
+	background-color:#eee;
+	border-radius:0.2em;
+	padding:0.2em;
 }
 
 #current-connections{
