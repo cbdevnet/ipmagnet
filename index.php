@@ -82,7 +82,7 @@
 		<div id="center-wrap">
 			<div id="content-main">
 				<div id="mission-statement">
-					ipMagnet allows you to see which IP address your BitTorrent Client is handing out to it's peers and trackers!
+					ipMagnet allows you to see which IP address your BitTorrent Client is handing out to its peers and trackers!
 				</div>
 				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.<br/>
 				FYI, the address you've accessed this page with is <?php print($_SERVER["REMOTE_ADDR"]); ?>
