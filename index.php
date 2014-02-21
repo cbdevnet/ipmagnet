@@ -99,7 +99,6 @@
 							<th>User Agent</th>
 						</tr>
 						<?php
-							//todo print
 							$row=$stmt->fetch(PDO::FETCH_ASSOC);
 							while($row!==FALSE){
 								print("<tr>");
