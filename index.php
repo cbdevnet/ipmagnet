@@ -1,4 +1,5 @@
 <?php
+	$TRACKER="http%3A%2F%2Flocalhost%3A80%2Fipmagnet%2F";
 	$db = new PDO("sqlite:ipmagnet.db3");
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
@@ -61,8 +62,6 @@
 		)
 	);
 
-	//$TRACKER="http%3A%2F%2Fdev.cbcdn.com%3A80%2Fipmagnet";
-	$TRACKER="http%3A%2F%2Flocalhost%3A80%2Fipmagnet%2F";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
