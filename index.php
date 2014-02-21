@@ -8,7 +8,6 @@
 	if(isset($_GET["info_hash"])){
 		$query="INSERT INTO hits (hash, timestamp, addr, agent) VALUES (:hash, :timestamp, :addr, :agent)";
 		$stmt=$db->prepare($query);
-		//ipv4 | ipv6
 		
 		$addrs=htmlentities($_SERVER["REMOTE_ADDR"], ENT_QUOTES);
 		if(isset($_GET["ipv4"])&&$_GET["ipv4"]!=$_SERVER["REMOTE_ADDR"]){
@@ -26,21 +25,43 @@
 				":agent" => htmlentities($_SERVER["HTTP_USER_AGENT"],ENT_QUOTES)
 			)
 		);
+
+		$stmt->closeCursor();
+		//todo db errorhandling
+		//fixme display ip here
 		print("d14:failure reason21:IP stored in databasee");
 		die();
 	}
 
 	if(isset($_GET["hash"])){
-		$HASH=htmlentities($_GET["hash"]); //fixme enough?
+		$HASH=htmlentities($_GET["hash"], ENT_QUOTES);
 	}
 	else{
 		$HASH=SHA1($_SERVER["REMOTE_ADDR"]);
 	}
 
 	if(isset($_GET["clear"])){
-		//todo clear for hash
+		//todo db errhandling
+		$query="DELETE FROM hits WHERE hash=:hash";
+		$stmt=$db->prepare($query);
+		$stmt->execute(
+			array(
+				":hash"=>$HASH
+			)
+		);
+		$stmt->closeCursor();
 	}
-	
+
+	//TODO select for print
+	//todo db errhandling
+	$query="SELECT * FROM hits WHERE hash=:hash";
+	$stmt=$db->prepare($query);
+	$stmt->execute(
+		array(
+			":hash"=>$HASH
+		)
+	);
+
 	//$TRACKER="http%3A%2F%2Fdev.cbcdn.com%3A80%2Fipmagnet";
 	$TRACKER="http%3A%2F%2Flocalhost%3A80%2Fipmagnet%2F";
 ?>
@@ -67,6 +88,7 @@
 				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.
 				FYI, the address you've accessed this page with is <?php print($_SERVER["REMOTE_ADDR"]); ?>
 				<div id="current-connections">
+					<!-- update link --!>
 					<div id="clear-data">
 						<a href="?clear&hash=<?php print($HASH); ?>" id="clear-data-link">Clear my Data</a>
 					</div>
@@ -76,6 +98,19 @@
 							<th>IP address</th>
 							<th>User Agent</th>
 						</tr>
+						<?php
+							//todo print
+							$row=$stmt->fetch(PDO::FETCH_ASSOC);
+							while($row!==FALSE){
+								print("<tr>");
+									print("<td>".$row["timestamp"]."</td>");
+									print("<td>".$row["addr"]."</td>");
+									print("<td>".$row["agent"]."</td>");
+								print("</tr>");
+								$row=$stmt->fetch(PDO::FETCH_ASSOC);
+							}
+							$stmt->closeCursor();
+						?>
 					</table>
 				</div>
 			</div>
