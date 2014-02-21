@@ -20,7 +20,7 @@
 
 		$stmt->execute(
 			array(
-				":hash" => htmlentities($_GET["info_hash"], ENT_QUOTES),
+				":hash" => htmlentities(bin2hex($_GET["info_hash"]), ENT_QUOTES),
 				":timestamp" => time(),
 				":addr" => $addrs,
 				":agent" => htmlentities($_SERVER["HTTP_USER_AGENT"],ENT_QUOTES)
