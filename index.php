@@ -52,7 +52,6 @@
 		$stmt->closeCursor();
 	}
 
-	//TODO select for print
 	//todo db errhandling
 	$query="SELECT * FROM hits WHERE hash=:hash";
 	$stmt=$db->prepare($query);
