@@ -85,24 +85,25 @@
 				<div id="mission-statement">
 					ipMagnet allows you to see which IP address your BitTorrent Client is handing out to it's peers and trackers!
 				</div>
-				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.
+				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.<br/>
 				FYI, the address you've accessed this page with is <?php print($_SERVER["REMOTE_ADDR"]); ?>
 				<div id="current-connections">
 					<!-- update link --!>
-					<div id="clear-data">
-						<a href="?clear&hash=<?php print($HASH); ?>" id="clear-data-link">Clear my Data</a>
+					<div id="app-links">
+						<a href="?hash=<?php print($HASH); ?>" class="app-link">Update</a>
+						<a href="?clear&hash=<?php print($HASH); ?>" class="app-link">Clear my Data</a>
 					</div>
 					<table id="conn-table">
 						<tr>
 							<th>Timestamp</th>
-							<th>IP address</th>
+							<th>IP address(es)</th>
 							<th>User Agent</th>
 						</tr>
 						<?php
 							$row=$stmt->fetch(PDO::FETCH_ASSOC);
 							while($row!==FALSE){
 								print("<tr>");
-									print("<td>".$row["timestamp"]."</td>");
+									print("<td>".date("d.m.Y H:i:s",$row["timestamp"])."</td>");
 									print("<td>".$row["addr"]."</td>");
 									print("<td>".$row["agent"]."</td>");
 								print("</tr>");

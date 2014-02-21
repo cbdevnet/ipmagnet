@@ -36,15 +36,19 @@ a {
 	font-size:90%;
 }
 
-#clear-data{
+#app-links{
 	float:right;
 	padding-right:2em;
 }
 
-#clear-data-link{
+.app-link{
 	background-color:#eee;
 	border-radius:0.2em;
 	padding:0.2em;
+}
+
+.app-link:hover{
+	background-color:#ddd;
 }
 
 #current-connections{
@@ -53,6 +57,12 @@ a {
 
 #conn-table{
 	width:100%;
+}
+
+#conn-table td {
+	background-color:#e2e2e2;
+	border-bottom:1px solid #eee;
+	border-top:1px solid #eee;
 }
 
 #meta-footer{
