@@ -57,6 +57,7 @@ a {
 
 #conn-table{
 	width:100%;
+	clear:both;
 }
 
 #conn-table td {

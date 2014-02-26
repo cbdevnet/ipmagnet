@@ -30,7 +30,9 @@
 		$stmt->closeCursor();
 		//todo db errorhandling
 		//fixme display ip here
-		print("d14:failure reason21:IP stored in databasee");
+		$resp="IP: ".$addr;
+		$resp=strlen($resp).":".$resp;
+		print("d14:failure reason".$resp."e");
 		die();
 	}
 
