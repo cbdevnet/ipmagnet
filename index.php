@@ -74,7 +74,7 @@
 		<script type="text/javascript" src="static/ajax.js"></script>
 		<script type="text/javascript" src="static/ipmagnet.js"></script>
 		<meta name="robots" content="noindex,nofollow" />
-		<meta http-equiv="refresh" content="60; url=?hash=<?php print($HASH); ?>">
+		<meta http-equiv="refresh" content="60; url=?hash=<?php print($HASH); ?>" />
 	</head>
 	<body onload="ipmagnet.init();">
 		<div id="title-wrap">
@@ -85,7 +85,8 @@
 				<div id="mission-statement">
 					ipMagnet allows you to see which IP address your BitTorrent Client is handing out to its peers and trackers!
 				</div>
-				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.<br/>
+				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&amp;dn=ipMagnet+Tracking+Link&amp;tr=<?php print($TRACKER); ?>">Magnet link</a> to your 
+				downloads and watch this page.<br/>
 				FYI, the address you've accessed this page with is <span id="remote-ip"><?php print($_SERVER["REMOTE_ADDR"]); ?></span>
 				<div id="current-connections">
 					<!-- update link --!>
@@ -119,8 +120,8 @@
 			<span id="status-line">Status: n/a <span id="status-text"></span></span>
 				<span id="meta-footer">
 					<a href="https://github.com/cbdevnet/ipmagnet">[source]</a>
-					<a href="http://www.kopimi.com/kopimi/"><img src="static/kopimi.png"/></a>
-					<a href="http://wtfpl.net/"><img src="static/wtfpl.png"/></a>
+					<a href="http://www.kopimi.com/kopimi/"><img src="static/kopimi.png" alt="kopimi"/></a>
+					<a href="http://wtfpl.net/"><img src="static/wtfpl.png" alt="wtfpl"/></a>
 				</span>
 			</div>
 		</div>
