@@ -73,3 +73,7 @@ a {
 #status-line{
 	float:left;
 }
+
+#remote-ip{
+	font-weight:bold;
+}

@@ -9,7 +9,7 @@
 	if(isset($_GET["info_hash"])){
 		$query="INSERT INTO hits (hash, timestamp, addr, agent) VALUES (:hash, :timestamp, :addr, :agent)";
 		$stmt=$db->prepare($query);
-		
+
 		$addrs=htmlentities($_SERVER["REMOTE_ADDR"], ENT_QUOTES);
 		if(isset($_GET["ipv4"])&&$_GET["ipv4"]!=$_SERVER["REMOTE_ADDR"]){
 			$addrs.=", ".htmlentities($_GET["ipv4"], ENT_QUOTES);
@@ -86,7 +86,7 @@
 					ipMagnet allows you to see which IP address your BitTorrent Client is handing out to its peers and trackers!
 				</div>
 				Add this <a href="magnet:?xt=urn:btih:<?php print($HASH); ?>&dn=ipMagnet+Tracking+Link&tr=<?php print($TRACKER); ?>">Magnet link</a> to your downloads and watch this page.<br/>
-				FYI, the address you've accessed this page with is <?php print($_SERVER["REMOTE_ADDR"]); ?>
+				FYI, the address you've accessed this page with is <span id="remote-ip"><?php print($_SERVER["REMOTE_ADDR"]); ?></span>
 				<div id="current-connections">
 					<!-- update link --!>
 					<div id="app-links">
