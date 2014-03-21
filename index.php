@@ -65,6 +65,7 @@
 	);
 
 ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -89,10 +90,10 @@
 				downloads and watch this page.<br/>
 				FYI, the address you've accessed this page with is <span id="remote-ip"><?php print($_SERVER["REMOTE_ADDR"]); ?></span>
 				<div id="current-connections">
-					<!-- update link --!>
+					<!-- update link -->
 					<div id="app-links">
 						<a href="?hash=<?php print($HASH); ?>" class="app-link">Update</a>
-						<a href="?clear&hash=<?php print($HASH); ?>" class="app-link">Clear my Data</a>
+						<a href="?clear&amp;hash=<?php print($HASH); ?>" class="app-link">Clear my Data</a>
 					</div>
 					<table id="conn-table">
 						<tr>
