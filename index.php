@@ -90,7 +90,6 @@
 				downloads and watch this page.<br/>
 				FYI, the address you've accessed this page with is <span id="remote-ip"><?php print($_SERVER["REMOTE_ADDR"]); ?></span>
 				<div id="current-connections">
-					<!-- update link -->
 					<div id="app-links">
 						<a href="?hash=<?php print($HASH); ?>" class="app-link">Update</a>
 						<a href="?clear&amp;hash=<?php print($HASH); ?>" class="app-link">Clear my Data</a>
