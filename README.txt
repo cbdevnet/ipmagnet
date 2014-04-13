@@ -6,7 +6,7 @@ The source code is freely available on http://github.com/cbdevnet/ipmagnet
 
 Requirements
 	HTTP daemon (eg. lighttpd)
-	PHP5 (eg. php5-fcgi)
+	PHP5 (eg. php5-fcgi (for debian)) with enabled JSON extensions
 	SQLite modules for PHP5 (eg. php5-sqlite)
 	Read/write permissions for the user running the httpd
 	 on the database file AND the containing folder
