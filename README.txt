@@ -3,14 +3,22 @@ is handing out to its Trackers. It does this by generating a magnet link,
 which when being requested generates a database entry.
 
 The source code is freely available on http://github.com/cbdevnet/ipmagnet
+and is designed to be read and understood by anyone having basic knowledge
+of HTML, PHP and JavaScript.
+
+The interface can be used without having JavaScript enabled.
+
 
 Requirements
-	HTTP daemon (eg. lighttpd)
-	PHP5 (eg. php5-fcgi (for debian)) with enabled JSON extensions
-	SQLite modules for PHP5 (eg. php5-sqlite)
-	Read/write permissions for the user running the httpd
-	 on the database file AND the containing folder
-	The short_open_tag option should be set to "off" in php.ini	
+	A Server accessible on the internet, providing
+	- an HTTP daemon (eg. lighttpd)
+	- with PHP5 (eg. php5-cgi (debian)) optionally with enabled JSON 
+	  extensions for use by the AJAX interface (mostly the default by now)
+	- SQLite PDO modules for PHP5 (eg. php5-sqlite (debian))
+	- The user running the HTTP daemon (www-data on debian) must have
+	  read/write access on the database file as well as the folder containing
+	  it
+	- The short_open_tag option should be set to "off" in php.ini
 
 Setup
 	Clone the repo into a folder that is available by the httpd.

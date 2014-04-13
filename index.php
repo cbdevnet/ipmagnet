@@ -3,13 +3,18 @@
 	$db = new PDO("sqlite:ipmagnet.db3");
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
+	//BitTorrent clients will submit the info_hash parameter when requesting the magnet link
 	if(isset($_GET["info_hash"])){
+
+		//prepare the insert query
 		$query="INSERT INTO hits (hash, timestamp, addr, agent) VALUES (:hash, :timestamp, :addr, :agent)";
 		$stmt=$db->prepare($query);
+		
 		if($stmt===FALSE){
 			exit("d14:failure reason16:Database failuree");
 		}
 
+		//gather all supplied ip addresses
 		$addrs=htmlentities($_SERVER["REMOTE_ADDR"], ENT_QUOTES);
 		if(isset($_GET["ipv4"])&&$_GET["ipv4"]!=$_SERVER["REMOTE_ADDR"]){
 			$addrs.=", ".htmlentities($_GET["ipv4"], ENT_QUOTES);
@@ -18,6 +23,7 @@
 			$addrs.=", ".htmlentities($_GET["ipv6"], ENT_QUOTES);
 		}
 
+		//insert the hit into the database
 		if(!($stmt->execute(
 			array(
 				":hash" => htmlentities(bin2hex($_GET["info_hash"]), ENT_QUOTES),
@@ -30,6 +36,8 @@
 		}
 
 		$stmt->closeCursor();
+
+		//print the ips as "failure reason" to be displayed by some clients
 		$resp="IP: ".$addrs;
 		$resp=strlen($resp).":".$resp;
 		exit("d14:failure reason".$resp."e");
@@ -38,9 +46,11 @@
 	$returnValue["message"]="ok";
 	$returnValue["code"]=0;
 
+	//if a hash was supplied, use it
 	if(isset($_GET["hash"])){
 		$HASH=htmlentities($_GET["hash"], ENT_QUOTES);
 	}
+	//else, generate a new one
 	else{
 		$HASH=SHA1($_SERVER["REMOTE_ADDR"]);
 	}
@@ -48,8 +58,10 @@
 	$returnValue["hash"]=$HASH;
 
 	if(isset($_GET["clear"])){
+		//delete all hits for a hash from the database
 		$query="DELETE FROM hits WHERE hash=:hash";
 		$stmt=$db->prepare($query);
+
 		if($stmt===FALSE){
 			$returnValue["message"]="Failed to prepare query.";
 			$returnValue["code"]=2;
@@ -61,25 +73,33 @@
 				":hash"=>$HASH
 			)
 		);
+		
 		$stmt->closeCursor();
 	}
 
+	//get all currently stored hits for a hash
 	$query="SELECT * FROM hits WHERE hash=:hash";
 	$stmt=$db->prepare($query);
+
 	if($stmt===FALSE){
 		$returnValue["message"]="Failed to prepare query.";
 		$returnValue["code"]=3;
 		exit(json_encode($returnValue));
 	}
+
 	$stmt->execute(
 		array(
 			":hash"=>$HASH
 		)
 	);
+
+	//print the response as JSON data if called from the ajax interface
 	if(isset($_GET["ajax"])){
+		//fetch all hits into one array
 		$returnValue["hits"]=$stmt->fetchAll(PDO::FETCH_ASSOC);
 		$stmt->closeCursor();
 
+		//set content-type and CORS headers
 		header("Content-Type: application/json");
 		header("Access-Control-Allow-Origin: *");	
 		exit(json_encode($returnValue));

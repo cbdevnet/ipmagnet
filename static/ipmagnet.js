@@ -25,10 +25,12 @@ var ipmagnet={
 	apiUrl:"index.php",
 	hash:"",
 
+	//display a short status update at the bottom of the screen
 	statusDisplay:function(text){
 		document.getElementById("status-text").textContent=text;	
 	},
 
+	//pad a string to a given length
 	pad:function(str,padString,length){
 		str=''+str;
 		while(str.length<length){
@@ -67,6 +69,7 @@ var ipmagnet={
 		ipmagnet.updateTable(ipmagnet.hash, true);
 	},
 
+	//build a single table row, given the text contents and optionally a tag name
 	buildRow:function(elements, tag){
 		tag=tag||"td";
 		var row=document.createElement("tr");
@@ -78,6 +81,7 @@ var ipmagnet={
 		return row;
 	},
 
+	//format a javascript date object to a sensible string representation
 	formatDate:function(date){
 		var datePart=ipmagnet.pad(date.getDate(),'0',2)+"."+ipmagnet.pad(date.getMonth()+1,'0',2)+"."+date.getFullYear();
 		var timePart=ipmagnet.pad(date.getHours(),'0',2)+":"+ipmagnet.pad(date.getMinutes(),'0',2)+":"+ipmagnet.pad(date.getSeconds(),'0',2);
@@ -86,6 +90,7 @@ var ipmagnet={
 	},
 
 	updateTable:function(hash, clear){
+		//get all hits from the database
 		ajax.asyncGet(ipmagnet.apiUrl+"?ajax&hash="+hash+(clear?"&clear":""), function(req){
 			//xhr completion function
 			if(req.status==200){
