@@ -52,7 +52,9 @@
 	}
 	//else, generate a new one
 	else{
-		$HASH=SHA1($_SERVER["REMOTE_ADDR"]);
+		$HASH=SHA1(mt_rand());
+		header("Location: ?hash=".$HASH);
+		exit();
 	}
 
 	$returnValue["hash"]=$HASH;
