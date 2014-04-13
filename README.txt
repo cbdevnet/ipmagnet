@@ -10,6 +10,7 @@ Requirements
 	SQLite modules for PHP5 (eg. php5-sqlite)
 	Read/write permissions for the user running the httpd
 	 on the database file AND the containing folder
+	The short_open_tag option should be set to "off" in php.ini	
 
 Setup
 	Clone the repo into a folder that is available by the httpd.

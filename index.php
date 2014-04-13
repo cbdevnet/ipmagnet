@@ -1,5 +1,5 @@
 <?php
-	$TRACKER="http%3A%2F%2Flocalhost%3A80%2Fipmagnet%2F";
+	$TRACKER=urlencode("http://localhost:80/ipmagnet/");
 	$db = new PDO("sqlite:ipmagnet.db3");
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
