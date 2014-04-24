@@ -22,6 +22,9 @@
 		if(isset($_GET["ipv6"])&&$_GET["ipv6"]!=$_SERVER["REMOTE_ADDR"]){
 			$addrs.=", ".htmlentities($_GET["ipv6"], ENT_QUOTES);
 		}
+		if(isset($_GET["ip"])&&$_GET["ip"]!=$_SERVER["REMOTE_ADDR"]){
+			$addrs.=", ".htmlentities($_GET["ip"], ENT_QUOTES);
+		}
 
 		//insert the hit into the database
 		if(!($stmt->execute(
