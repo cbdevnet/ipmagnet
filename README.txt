@@ -16,8 +16,8 @@ Requirements
 	  extensions for use by the AJAX interface (mostly the default by now)
 	- SQLite PDO modules for PHP5 (eg. php5-sqlite (debian))
 	- The user running the HTTP daemon (www-data on debian) must have
-	  read/write access on the database file as well as the folder containing
-	  it
+	  read/write access on the database file as well as the folder 
+	  containing it
 	- The short_open_tag option should be set to "off" in php.ini
 
 Setup
@@ -29,3 +29,10 @@ Setup
 		Optionally edit the database path (line 3) if you do not
 		 want to have the database in the same folder for security
 		 reasons.
+
+	If you'd like to set a timeout after which clients should recheck their
+	IP against the tracking link, set $enableInterval to true on line 4.
+	WARNING: This feature may be ignored or may break some clients
+	(and they'd be right) as the spec explicitly states that when a
+	'failure reason' key is sent (which ipMagnet does), NO other key
+	may be present. So use at your own risk.

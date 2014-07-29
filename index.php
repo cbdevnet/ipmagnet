@@ -1,6 +1,9 @@
 <?php
 	$TRACKER=urlencode("http://localhost:80/ipmagnet/");
 	$db = new PDO("sqlite:ipmagnet.db3");
+	$enableInterval=false;
+	$trackerInterval=300;
+	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
 	//BitTorrent clients will submit the info_hash parameter when requesting the magnet link
@@ -42,8 +45,13 @@
 
 		//print the ips as "failure reason" to be displayed by some clients
 		$resp="IP: ".$addrs;
-		$resp=strlen($resp).":".$resp;
-		exit("d14:failure reason".$resp."e");
+		$resp="14:failure reason".strlen($resp).":".$resp;
+
+		if($enableInterval){
+			$resp.="8:intervali".$trackerInterval."e";
+		}
+
+		exit("d".$resp."e");
 	}
 
 	$returnValue["message"]="ok";
