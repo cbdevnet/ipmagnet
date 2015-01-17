@@ -22,13 +22,14 @@ Requirements
 
 Setup
 	Clone the repo into a folder that is available by the httpd.
-	Edit index.php
-		Change the tracker URL (line 2) to point to the public
+	Optionally, copy the sample config file (ipmagnet.ini.php-sample)
+	to ipmagnet.ini.php and change its settings. Options include:
+		Change the tracker URL to point to the public
 		 location of the index.php file.
 	
-		Optionally edit the database path (line 3) if you do not
-		 want to have the database in the same folder for security
-		 reasons.
+		Change the database path to point to the location of the
+		 ipmagnet.db3 file if you want to have the database in a
+		 different folder than index.php for security reasons.
 
 	If you'd like to set a timeout after which clients should recheck their
 	IP against the tracking link, set $enableInterval to true on line 4.

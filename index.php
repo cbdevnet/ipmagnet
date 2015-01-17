@@ -1,6 +1,14 @@
 <?php
-	$TRACKER=urlencode("http://localhost:80/ipmagnet/");
-	$db = new PDO("sqlite:ipmagnet.db3");
+	$cnfgFile=dirname(__FILE__) . '/ipmagnet.ini.php';
+	if(file_exists($cnfgFile)){
+		$cnfg=parse_ini_file($cnfgFile);
+	}
+	$TRACKER = (empty($cnfg['tracker']))
+		? urlencode("http://{$_SERVER['HTTP_HOST']}".dirname($_SERVER['PHP_SELF']).'/')
+		: urlencode($cnfg['tracker']);
+	$db = (empty($cnfg['db_path']))
+		? new PDO("sqlite:ipmagnet.db3")
+		: new PDO("sqlite:$db_path");
 	$enableInterval=false;
 	$trackerInterval=300;
 	
