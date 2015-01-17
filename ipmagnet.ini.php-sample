@@ -1,0 +1,19 @@
+; This is a sample configuration for the IPMagnet torrent IP testing tool.
+; It sets the default tracker address that you may wish to use, or modify.
+; Copy this file to `ipmagnet.ini.php`, then make changes there.
+;
+; This file uses "init file" formatting. To learn more about the syntax of this
+; file, please refer to the PHP manual:
+;
+;     http://php.net/parse_ini_file
+;
+;<?php
+; exit('Direct access to this file is prohibited.');
+;// EDIT BELOW THESE LINES.
+;/*
+
+tracker="http://localhost:80/ipmagnet/"
+db_path="ipmagnet.db3"
+
+;*/
+;?>
