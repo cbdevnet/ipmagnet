@@ -1,6 +1,7 @@
 body{
-	width:100%;
+	width:95%;
 	height:100%;
+	margin:1em auto;
 }
 
 h1{
@@ -68,6 +69,8 @@ a {
 
 #meta-footer{
 	float:right;
+	font-size:90%;
+	color:#999;
 }
 
 #status-line{
@@ -77,3 +80,4 @@ a {
 #remote-ip{
 	font-weight:bold;
 }
+

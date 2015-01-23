@@ -175,6 +175,7 @@
 			<div id="footer-text">
 			<span id="status-line">Status: <span id="status-text">Using plain HTML</span></span>
 				<span id="meta-footer">
+					Proudly run without ads or web tracking. Set up your own with the
 					<a href="https://github.com/cbdevnet/ipmagnet">[source]</a>
 					<a href="http://www.kopimi.com/kopimi/"><img src="static/kopimi.png" alt="kopimi"/></a>
 					<a href="http://wtfpl.net/"><img src="static/wtfpl.png" alt="wtfpl"/></a>

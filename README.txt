@@ -8,7 +8,6 @@ of HTML, PHP and JavaScript.
 
 The interface can be used without having JavaScript enabled.
 
-
 Requirements
 	A Server accessible on the internet, providing
 	- an HTTP daemon (eg. lighttpd)
@@ -28,7 +27,8 @@ Setup
 	
 		Optionally edit the database path (line 3) if you do not
 		 want to have the database in the same folder for security
-		 reasons.
+		 reasons (or set up your webserver so it denies access to
+		 the database file).
 
 	If you'd like to set a timeout after which clients should recheck their
 	IP against the tracking link, set $enableInterval to true on line 4.
@@ -36,3 +36,18 @@ Setup
 	(and they'd be right) as the spec explicitly states that when a
 	'failure reason' key is sent (which ipMagnet does), NO other key
 	may be present. So use at your own risk.
+
+	Large or high-volume installations, much as I would encourage everyone
+	to host their own instances instead, should probably use some advanced 
+	safeguards, such as using a RDBMS more suited for such workloads (such 
+	as PostgreSQL or MariaDB) as the data backend. This can be done by 
+	changing the DSN (Data Source Name). Please refer to the PHP PDO manual 
+	for information on how to do that.
+	The database needs to contain a table named 'hits' with the columns
+		'id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE
+		'hash' TEXT NOT NULL or VARCHAR(40) NOT NULL (depending on your RDBMS)
+		'timestamp' INTEGER NOT NULL
+		'addr' TEXT NOT NULL or VARCHAR(255) NOT NULL
+		'agent' TEXT NOT NULL or VARCHAR(255) NOT NULL
+	Another good idea would be to use a cronjob to regularly wipe the database
+	to ensure better privacy on behalf of the users.
