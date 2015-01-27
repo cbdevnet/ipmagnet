@@ -45,9 +45,16 @@ Setup
 	for information on how to do that.
 	The database needs to contain a table named 'hits' with the columns
 		'id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE
-		'hash' TEXT NOT NULL or VARCHAR(40) NOT NULL (depending on your RDBMS)
+		'hash' TEXT NOT NULL or VARCHAR(40) NOT NULL 
+				(depending on your RDBMS)
 		'timestamp' INTEGER NOT NULL
 		'addr' TEXT NOT NULL or VARCHAR(255) NOT NULL
 		'agent' TEXT NOT NULL or VARCHAR(255) NOT NULL
-	Another good idea would be to use a cronjob to regularly wipe the database
-	to ensure better privacy on behalf of the users.
+	Another good idea would be to use a cronjob to regularly wipe the 
+	database to ensure better privacy on behalf of the users.
+
+	Example configuration snippet for Apache
+		<Files "ipmagnet.db3">
+			Order allow,deny
+			Deny from all
+		</Files>
