@@ -14,7 +14,7 @@
 		$stmt=$db->prepare($query);
 		
 		if($stmt===FALSE){
-			exit("d14:failure reason16:Database failuree");
+			exit("d14:failure reason16:Database failure");
 		}
 
 		//gather all supplied ip addresses
