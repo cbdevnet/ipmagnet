@@ -1,5 +1,5 @@
 <?php
-	$TRACKER=urlencode("http://localhost:80/ipmagnet/");
+	$TRACKER=urlencode("http://localhost:80/ipmagnet/"); //Remember to include the trailing slash here!
 	$db = new PDO("sqlite:ipmagnet.db3");
 	$enableInterval=false;
 	$trackerInterval=300;
