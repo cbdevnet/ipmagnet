@@ -1,0 +1,4 @@
+<Files "ipmagnet.db3">
+    Order allow,deny
+    Deny from all
+</Files>
