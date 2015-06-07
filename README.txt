@@ -1,13 +1,9 @@
 ipMagnet
 ================
 
-ipMagnet allows you to quickly check what adresses your BitTorrent client
-is handing out to its Trackers. It does this by generating a magnet link,
-which when being requested generates a database entry.
+ipMagnet allows you to quickly check what adresses your BitTorrent client is handing out to its Trackers. It does this by generating a magnet link, which when being requested generates a database entry.
 
-The source code is freely available on http://github.com/cbdevnet/ipmagnet
-and is designed to be read and understood by anyone having basic knowledge
-of HTML, PHP and JavaScript.
+The source code is freely available on http://github.com/cbdevnet/ipmagnet and is designed to be read and understood by anyone having basic knowledge of HTML, PHP and JavaScript.
 
 The interface can be used without having JavaScript enabled.
 
