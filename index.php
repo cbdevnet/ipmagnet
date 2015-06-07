@@ -123,7 +123,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>ipmagnet</title>
+		<title>ipMagnet</title>
 		<link rel="icon" href="static/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="static/ipmagnet.css" />
 		<script type="text/javascript" src="static/ajax.js"></script>
