@@ -17,7 +17,6 @@ Requirements
 	- The user running the HTTP daemon (www-data on debian) must have
 	  read/write access on the database file as well as the folder 
 	  containing it
-	- The short_open_tag option should be set to "off" in php.ini
 
 Setup
 	Clone the repo into a folder that is available by the httpd.
