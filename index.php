@@ -124,7 +124,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>ipMagnet</title>
-		<link rel="icon" href="static/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="static/favicon.png" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="static/ipmagnet.css" />
 		<script type="text/javascript" src="static/ajax.js"></script>
 		<script type="text/javascript" src="static/ipmagnet.js"></script>
