@@ -6,6 +6,10 @@
 	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
+	function is_sha1($string){
+		return preg_match('/^[A-Fa-f0-9]{40}$/', $string);
+	}
+
 	//BitTorrent clients will submit the info_hash parameter when requesting the magnet link
 	if(isset($_GET["info_hash"])){
 
@@ -57,9 +61,9 @@
 	$returnValue["message"]="ok";
 	$returnValue["code"]=0;
 
-	//if a hash was supplied, use it
-	if(isset($_GET["hash"])){
-		$HASH=htmlentities($_GET["hash"], ENT_QUOTES);
+	//if a hash was supplied and it's a valid sha1 hash, use it
+	if(isset($_GET["hash"]) && is_sha1($_GET["hash"])){
+		$HASH=strtolower($_GET["hash"]);
 	}
 	//else, generate a new one
 	else{
