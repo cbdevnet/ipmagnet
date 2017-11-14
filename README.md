@@ -53,9 +53,9 @@ The database needs to contain a table named 'hits' with the columns
 
 Another good idea would be to use a cronjob to regularly wipe the database to ensure better privacy on behalf of the users.
 
-### Disallowing download of the SQLite database
-To protect the privacy of your users, you should configure your httpd to disallow access to the database containing all
-non-deleted accesses (`ipmagnet.db3` in the standard configuration). This can either be done by having the database
+### Preventing download of the SQLite database
+To protect the privacy of your users, you should configure your httpd to deny access to the database containing all
+non-deleted accesses (`ipmagnet.db3` in the standard configuration) by remote users. This can either be done by having the database
 file exist in a location not served by the httpd, or introducing additional configuration.
 
 Example configuration snippet for Apache
