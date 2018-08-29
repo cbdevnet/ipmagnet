@@ -66,3 +66,22 @@ Example configuration snippet for Apache
 	Deny from all
 </Files>
 ```
+
+### Basic web panel access control
+
+Note that ipMagnet by design stores very little important data, uses randomly generated pseudonyms (hashes) for identifying it and provides
+a simple deletion method for that data. Thus, attack surface and potential risk on breach is already very much minimized.
+
+If for some reason, you want to limit access to the web panel via a password, you can either configure basic authentication in your web server,
+while taking care to also embed valid credentials into the `$TRACKER` variable at line 2 or insert the following lines at/after line 60 of `index.php`:
+
+```
+if (!isset($_SERVER["PHP_AUTH_USER"]) || $_SERVER["PHP_AUTH_PW"] != "SUPER_SECRET_PASSWORD") {
+    header('WWW-Authenticate: Basic realm="ipMagnet"');
+    header('HTTP/1.0 401 Unauthorized');
+    exit();
+} 
+```
+
+Replace `SUPER_SECRET_PASSWORD` with a plaintext password of your choice. This should allow BitTorrent clients to access the tracking link without
+problems while preventing access to the web panel.
