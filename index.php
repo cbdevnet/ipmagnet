@@ -164,7 +164,7 @@
 							$row=$stmt->fetch(PDO::FETCH_ASSOC);
 							while($row!==FALSE){
 								print("<tr>");
-									print("<td>".date("d.m.Y H:i:s",$row["timestamp"])."</td>");
+									print("<td>".date("d.m.Y H:i:s (e)",$row["timestamp"])."</td>");
 									print("<td>".$row["addr"]."</td>");
 									print("<td>".$row["agent"]."</td>");
 								print("</tr>");

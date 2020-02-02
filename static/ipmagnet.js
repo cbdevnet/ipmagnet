@@ -83,10 +83,10 @@ var ipmagnet={
 
 	//format a javascript date object to a sensible string representation
 	formatDate:function(date){
-		var datePart=ipmagnet.pad(date.getDate(),'0',2)+"."+ipmagnet.pad(date.getMonth()+1,'0',2)+"."+date.getFullYear();
-		var timePart=ipmagnet.pad(date.getHours(),'0',2)+":"+ipmagnet.pad(date.getMinutes(),'0',2)+":"+ipmagnet.pad(date.getSeconds(),'0',2);
+		var datePart = ipmagnet.pad(date.getDate(), '0', 2) + "." + ipmagnet.pad(date.getMonth() + 1, '0', 2) + "." + date.getFullYear();
+		var timePart = ipmagnet.pad(date.getHours(), '0', 2) + ":" + ipmagnet.pad(date.getMinutes(), '0', 2) + ":" + ipmagnet.pad(date.getSeconds(), '0', 2);
 
-		return datePart+" "+timePart;
+		return datePart + " " + timePart + " (" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
 	},
 
 	updateTable:function(hash, clear){
