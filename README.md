@@ -85,3 +85,12 @@ if (!isset($_SERVER["PHP_AUTH_USER"]) || $_SERVER["PHP_AUTH_PW"] != "SUPER_SECRE
 
 Replace `SUPER_SECRET_PASSWORD` with a plaintext password of your choice. This should allow BitTorrent clients to access the tracking link without
 problems while preventing access to the web panel.
+
+### Deployment behind a reverse proxy
+
+Deploying ipMagnet behind a reverse proxy is possible, but it is very much an advanced use-case. To do so, make sure that the front-end server
+correctly sets the HTTP `X-Forwarded-For` header in the backend requests and overwrites it, if it is supplied by the client.
+
+To access the original client data instead of the reverse proxy address, change the references to `REMOTE_ADDR` before the hit insert statements
+in `index.php` with `HTTP_X_FORWARDED_FOR`.
+
