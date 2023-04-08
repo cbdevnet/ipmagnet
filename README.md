@@ -19,7 +19,29 @@ facilitate further tracking.
 * SQLite PDO modules for the PHP installation (eg. php7.0-sqlite3 on Debian)
 * The user running the HTTP daemon (www-data on debian) must have read/write access on the database file as well as the  folder containing it
 
-## Setup
+## Setup with Docker
+
+You can easily build your own ipmagnet docker container by following the instructions below.
+
+1. Clone this repository, then edit the environment variables within the Dockerfile provided according to your configuration or just create a file named "Dockerfile" yourself and copy inside the content of the Dockerfile, while changing the ENV variables according to your configuration.
+
+Variable | type | unit | example
+------------- | ------------- | ------------- | -------------
+URL | String | - | your-ipmagnet-url-or-IP-without-trailing-slash.com or 127.0.0.1 or 196.23.62.266
+ENABLE_INTERVAL | boolean | - |  true
+INTERVAL | integer | seconds | 60
+
+2. Build the container with the `docker build -t "ipmagnet" . ` from the same folder the Dockerfile resides in.
+
+This will create a nginx webserver and use the files from the ipmagnet repository.
+
+3. Run the ipmagnet container by using `docker run -d --rm --name ipmagnet -p 80:80 ipmagnet` 
+
+You can of course change the port binding aswell, e.g. `docker run -d --rm --name ipmagnet -p 443:443 ipmagnet` or `docker run -d --rm --name ipmagnet -p 8080:80 ipmagnet`
+
+4. You can then access the webui with the defined URL you set within the "URL" environment variable of the Dockerfile and the port used. Usually it would be `127.0.0.1:80` or the public IP of the server where it is hosted.
+
+## Setup without Docker
 
 1. Clone the repo into a folder that is available by the http daemon.
 2. Edit index.php
