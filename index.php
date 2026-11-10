@@ -73,7 +73,7 @@
 	}
 	//else, generate a new one
 	else{
-		$HASH=SHA1(mt_rand());
+		$HASH=bin2hex(random_bytes(20));
 		header("Location: ?hash=".$HASH);
 		exit();
 	}
