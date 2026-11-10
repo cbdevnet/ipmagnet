@@ -42,7 +42,8 @@
 				":agent" => htmlentities($_SERVER["HTTP_USER_AGENT"],ENT_QUOTES)
 			)
 		))){
-			//failed to insert.
+			//the write failed; report it to the client instead of a normal reply
+			exit("d14:failure reason16:Database failuree");
 		}
 
 		$stmt->closeCursor();
